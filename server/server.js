@@ -60,3 +60,6 @@ const PORT = config.port;
 app.listen(PORT, () => {
   console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
 });
+
+// Export the Express API
+module.exports = app;
