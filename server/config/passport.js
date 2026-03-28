@@ -6,7 +6,7 @@ const config = require('./config');
 passport.use(new GoogleStrategy({
     clientID: config.google.clientId,
     clientSecret: config.google.clientSecret,
-    callbackURL: 'http://localhost:5000/api/auth/google/callback'
+    callbackURL: `${config.clientUrl || 'http://localhost:5000'}/api/auth/google/callback`
   },
   async (accessToken, refreshToken, profile, done) => {
     try {

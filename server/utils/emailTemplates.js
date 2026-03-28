@@ -193,7 +193,7 @@ const newEventEmail = (user, event) => ({
         <!-- CTA Button -->
         <div style="text-align: center;">
           <a 
-            href="http://localhost:3000"
+            href="${process.env.CLIENT_URL || 'http://localhost:3000'}"
             style="display: inline-block; background: #2563eb; color: white;
                    padding: 14px 36px; border-radius: 8px; text-decoration: none;
                    font-size: 15px; font-weight: 700;"

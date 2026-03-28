@@ -37,7 +37,9 @@ export const AuthProvider = ({ children }) => {
   }
 
   const login = () => {
-    window.location.href = `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/google`
+    const isProd = process.env.NODE_ENV === 'production';
+    const baseUrl = process.env.REACT_APP_API_URL || (isProd ? '' : 'http://localhost:5000');
+    window.location.href = `${baseUrl}/api/auth/google`;
   }
 
   const logout = () => {
