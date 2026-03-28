@@ -178,3 +178,14 @@
   color: var(--text-light);
   cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+  .detail-container { padding-top: 40px; padding-bottom: 40px; }
+  .detail-layout { flex-direction: column; gap: 24px; }
+  .detail-left { flex: unset; width: 100%; }
+  .detail-right { flex: unset; width: 100%; }
+  .detail-image { height: 280px; }
+  .detail-title { font-size: 2rem; }
+  .detail-info-grid { grid-template-columns: 1fr; gap: 16px; }
+  .sticky-booking-card { position: static; padding: 20px; }
+}

@@ -67,3 +67,10 @@
   color: #fff;
   padding: 10px 24px;
 }
+
+@media (max-width: 768px) {
+  .event-form { grid-template-columns: 1fr; padding: 20px; }
+  .event-form-title, .form-group-full, .form-actions { grid-column: span 1; }
+  .form-actions { flex-direction: column; }
+  .btn-form-cancel, .btn-form-save { width: 100%; text-align: center; }
+}

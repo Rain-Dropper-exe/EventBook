@@ -154,3 +154,40 @@
 .btn-signin:hover {
   background: #1d4ed8;
 }
+
+.burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+@media (max-width: 768px) {
+  .burger-btn { display: block; }
+  .navbar { padding: 0; min-height: 72px; height: auto; }
+  .nav-content { display: block; position: relative; }
+  .nav-left { display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; padding: 16px; }
+  .nav-right {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 24px 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    z-index: 9999;
+  }
+  .nav-right.open { display: flex; }
+  .user-section { flex-direction: column; width: 100%; align-items: center; gap: 16px; }
+  .user-detail-group { align-self: center; margin-bottom: 8px; }
+  .btn-cta-hero, .btn-logout, .btn-signin { width: 100%; text-align: center; justify-content: center; }
+}

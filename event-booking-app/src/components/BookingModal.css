@@ -171,3 +171,9 @@
 .btn-confirm:hover {
   background-color: var(--primary-hover);
 }
+
+@media (max-width: 768px) {
+  .modal-content { width: 90%; padding: 20px; max-height: 90vh; overflow-y: auto; }
+  .stripe-split-row { flex-direction: column; gap: 16px; }
+  .modal-actions { flex-direction: column; }
+}

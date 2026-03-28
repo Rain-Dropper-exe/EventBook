@@ -6,7 +6,9 @@ const config = require('./config');
 passport.use(new GoogleStrategy({
     clientID: config.google.clientId,
     clientSecret: config.google.clientSecret,
-    callbackURL: `${config.clientUrl || 'http://localhost:5000'}/api/auth/google/callback`
+    callbackURL: process.env.NODE_ENV === 'production' 
+      ? `${config.clientUrl}/api/auth/google/callback` 
+      : 'http://localhost:5000/api/auth/google/callback'
   },
   async (accessToken, refreshToken, profile, done) => {
     try {

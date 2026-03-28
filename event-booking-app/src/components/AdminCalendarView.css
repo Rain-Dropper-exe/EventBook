@@ -161,3 +161,30 @@
 .cal-event-actions button:hover {
   text-decoration: underline;
 }
+
+.mobile-footer-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .admin-calendar-view { overflow-x: hidden; }
+  .admin-calendar-view .days { display: none; }
+  .admin-calendar-view .body, .admin-calendar-view .body .row { display: block; height: auto; min-height: unset; width: 100%; min-width: unset; }
+  .admin-calendar-view .body .row { border-bottom: none; }
+  .admin-calendar-view .cell {
+    flex-direction: column;
+    padding: 16px;
+    border-bottom: 2px solid #e2e8f0;
+    border-right: none;
+    min-height: auto;
+  }
+  .admin-calendar-view .cell.disabled { display: none; }
+  .admin-calendar-view .number { font-size: 1.25rem; background: #f1f5f9; display: inline-block; padding: 4px 12px; border-radius: 8px; margin-bottom: 12px; }
+  .cell-events { flex: 1; overflow-y: visible; flex-direction: column; gap: 12px; }
+  .cal-event-card { flex-direction: row; }
+  .cal-event-img { width: 100px; height: auto; min-height: 80px; border-bottom: none; border-right: 1px solid #e2e8f0; }
+  .cal-event-details { padding: 12px; flex: 1; justify-content: center; gap: 8px; }
+  .cal-event-title { font-size: 14px; white-space: normal; }
+  .cal-event-actions button { font-size: 12px; background: #f1f5f9; padding: 6px 12px; border-radius: 6px; }
+  .mobile-footer-nav { display: flex; border-top: 1px solid #e2e8f0; border-bottom: none; }
+}

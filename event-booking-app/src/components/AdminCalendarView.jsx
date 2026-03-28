@@ -98,6 +98,21 @@ const AdminCalendarView = ({ events, onEdit, onDelete }) => {
         ))}
       </div>
       <div className="body">{rows}</div>
+      <div className="header row flex-middle mobile-footer-nav">
+        <div className="col col-start">
+          <button className="icon-btn" onClick={prevMonth}>
+            &#10094; Prev
+          </button>
+        </div>
+        <div className="col col-center">
+          <span>{format(currentMonth, "MMMM yyyy")}</span>
+        </div>
+        <div className="col col-end">
+          <button className="icon-btn" onClick={nextMonth}>
+            Next &#10095;
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

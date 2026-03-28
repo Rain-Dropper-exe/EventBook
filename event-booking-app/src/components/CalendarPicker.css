@@ -137,3 +137,8 @@
   font-weight: 700;
   background: #eff6ff;
 }
+
+@media (max-width: 768px) {
+  .cal-dropdown { width: 90vw; max-width: 320px; left: 50%; transform: translateX(-50%); }
+  .cal-toggle-text { font-size: 1.25rem; }
+}

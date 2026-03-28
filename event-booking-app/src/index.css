@@ -26,6 +26,12 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100vw;
 }
 
 a {
@@ -52,9 +58,8 @@ input, select {
   padding: 0 32px;
 }
 
-@media (min-width: 1024px) {
-  /* Enforce desktop layout only as requested */
-  body {
-    min-width: 1024px;
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
   }
 }

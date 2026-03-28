@@ -88,3 +88,37 @@
   font-size: 4rem;
   color: var(--border);
 }
+
+@media (max-width: 768px) {
+  .bookings-container { padding-top: 100px; padding-bottom: 60px; }
+  .bookings-title { font-size: 1.5rem; }
+  
+  .bookings-table-wrapper { background: transparent; border: none; box-shadow: none; overflow: visible; }
+  .bookings-table thead { display: none; }
+  .bookings-table, .bookings-table tbody, .bookings-table tr, .bookings-table td { display: block; width: 100%; }
+  .bookings-table tr { 
+    margin-bottom: 20px; 
+    border: 1px solid var(--border); 
+    border-radius: 12px; 
+    padding: 16px; 
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .bookings-table td { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 0; 
+    border-bottom: 1px dashed var(--border); 
+    text-align: right; 
+  }
+  .bookings-table td:last-child { border-bottom: none; }
+  
+  .bookings-table td:nth-child(1)::before { content: "Event"; font-weight: 700; color: var(--text-light); font-size: 11px; text-transform: uppercase; margin-right: 16px; }
+  .bookings-table td:nth-child(2)::before { content: "Date"; font-weight: 700; color: var(--text-light); font-size: 11px; text-transform: uppercase; margin-right: 16px; }
+  .bookings-table td:nth-child(3)::before { content: "Seats"; font-weight: 700; color: var(--text-light); font-size: 11px; text-transform: uppercase; margin-right: 16px; }
+  .bookings-table td:nth-child(4)::before { content: "Amount"; font-weight: 700; color: var(--text-light); font-size: 11px; text-transform: uppercase; margin-right: 16px; }
+  .bookings-table td:nth-child(5)::before { content: "Status"; font-weight: 700; color: var(--text-light); font-size: 11px; text-transform: uppercase; margin-right: 16px; }
+  
+  .booking-event-name { text-align: right; margin-bottom: 2px; }
+}

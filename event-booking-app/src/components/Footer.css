@@ -90,3 +90,9 @@
 .footer-social-link:hover {
   color: #fff;
 }
+
+@media (max-width: 768px) {
+  .footer-content { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  .footer { padding: 40px 0 24px; }
+}
