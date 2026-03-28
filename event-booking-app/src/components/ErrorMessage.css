@@ -1,0 +1,31 @@
+.error-box {
+  text-align: center;
+  padding: 48px;
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 10px;
+  margin: 32px auto;
+  max-width: 480px;
+}
+
+.error-icon {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.error-box button {
+  margin-top: 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.error-box button:hover {
+  background: #1d4ed8;
+}

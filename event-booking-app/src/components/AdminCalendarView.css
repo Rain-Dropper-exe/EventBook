@@ -1,0 +1,163 @@
+.admin-calendar-view {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.admin-calendar-view .header {
+  padding: 16px;
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-calendar-view .icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #64748b;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.admin-calendar-view .icon-btn:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.admin-calendar-view .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-calendar-view .days .col {
+  padding: 12px 8px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.admin-calendar-view .body {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 360px);
+  min-height: 480px;
+}
+
+.admin-calendar-view .body .row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  flex: 1;
+  min-height: 0;
+}
+
+.admin-calendar-view .body .row:not(:last-child) {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-calendar-view .cell {
+  border-right: 1px solid #e2e8f0;
+  padding: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  min-width: 0;
+}
+
+.admin-calendar-view .cell:last-child {
+  border-right: none;
+}
+
+.admin-calendar-view .cell.disabled {
+  background: #e2e8f0;
+  opacity: 0.4;
+}
+
+.admin-calendar-view .number {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.cell-events {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.cell-events::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cell-events::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.cal-event-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: #fff;
+  border: 1px solid #e2e8f0;
+}
+
+.cal-event-img {
+  width: 100%;
+  height: 48px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cal-event-details {
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cal-event-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cal-event-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cal-event-actions button {
+  background: none;
+  border: none;
+  font-size: 10px;
+  cursor: pointer;
+  color: #2563eb;
+  padding: 0;
+  font-weight: 600;
+}
+
+.cal-event-actions button:hover {
+  text-decoration: underline;
+}
