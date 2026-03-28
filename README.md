@@ -1,105 +1,82 @@
-# EventBook — MERN Event Booking App
+# EventBook 🎟️
 
-A full-stack event booking platform built with MongoDB, Express.js, React and Node.js.
+Hi there! Welcome to **EventBook**, a full-stack MERN application I built to learn and demonstrate my skills in web development, backend architecture, and application design. 
 
-## Features
-- Browse and filter events by category with pagination
-- Google OAuth 2.0 authentication with JWT
-- Secure Stripe payment integration
-- Admin dashboard to manage events and bookings
-- Booking management — confirm and cancel bookings
-- Responsive desktop UI
+I built this project to understand how real-world applications handle data, authentication, and user roles. While it's a practice project, I tried to handle edge cases and think about system design constraints as much as possible!
 
-## Tech Stack
-| Layer | Tech |
-|---|---|
-| Frontend | React, React Router, Plain CSS |
-| Backend | Node.js, Express.js |
-| Database | MongoDB + Mongoose |
-| Auth | Google OAuth 2.0 + JWT |
-| Payments | Stripe |
+---
 
-## Project Structure
-```
-/event-booking-app   React frontend
-/server
-  /config            DB, Passport, Config
-  /controllers       Business logic (MVC)
-  /middleware        Auth, isAdmin, validation, error handling
-  /models            Mongoose schemas
-  /routes            Express routes
-  /utils             AppError class
-  seed.js            DB seeder
-```
+## 🌟 What Can You Do Here?
 
-## Setup Instructions
+- **Browse Events:** Built a responsive UI where users can search for upcoming events (Concerts, Conferences, Workshops), filter by categories, and view them in a list or grid or even search by dates using the calendar.
+- **Admin Dashboard:** Admins have a dedicated view where they can create, update, and manage events. They can also use an admin calendar to track schedules easily.
+- **Bookings & Orders:** Users can select seats and place booking requests. The app checks real-time availability before they hit "pay" to make sure the event isn't sold out!
+- **Email Notifications:** Once an admin approves a booking, the user gets an automated email. Also, if a new event goes live that matches a category you've booked before, you'll get a suggestion email!
 
-### Prerequisites
-- Node.js v18+
-- MongoDB Atlas account (free tier works)
-- Google Cloud Console project (for OAuth)
-- Stripe account (test mode)
+---
 
-### 1. Clone and install
+## 🛠️ Tech Stack I Used
+
+- **Frontend:** React, React Router, and plain CSS for styling.
+- **Backend:** Node.js following the MVC (Model-View-Controller) pattern.
+- **Database:** MongoDB hosted on MongoCloud (Atlas).
+- **Authentication:** Google OAuth 2.0 along with JWT (JSON Web Tokens) to securely keep users logged in.
+- **Hosting:** Vercel for both the React frontend and the Express backend (Serverless).
+
+---
+
+## 🤔 My Design Choices & Trade-offs
+
+Since I am a fresher building this alone, I had to make some practical decisions about what to include and how to build it:
+
+1. **Why only Admins can create events?** initially, I thought about letting any user create an event. However, I realized that without a proper vetting process, that could lead to spam and messy data. So, I restricted event creation strictly to the Admin role to keep the platform clean.
+2. **Manual Booking Approvals:** I decided to have admins manually approve ticket requests rather than auto-accepting them. In a real highly-trafficked app, auto-accepting without advanced database-locking can lead to accidentally selling more tickets than you have. This manual queue was my way of safely handling ticket limits for now!
+3. **Payments:** I wrote the initial integration for Stripe, but because full business verification takes a lot of time and live details, I currently bypassed the active payment gateway for this build.
+4. **MVC Pattern:** I made sure to structure the backend strictly using controllers, routes, and models so the code is easy to read, debug, and scale.
+
+---
+
+## 🚀 Where I Want to Take This Next (Future System Design)
+
+This project taught me a lot, but I already know what I need to learn next to make it even better! If I were to upgrade this to handle production "peak load" traffic, I would:
+
+- **Implement Queues:** Use something like Redis or RabbitMQ to manage huge spikes in traffic when a popular concert ticket drops.
+- **Better Race Conditions:** Build optimistic UI updates and strict database locks so multiple users trying to buy the exact same final ticket don't break the count.
+- **Role Permissions:** Add an "Organizer" role so people can submit events for an Admin to review and publish.
+
+---
+
+## ⚙️ How to Run It Locally
+
+Want to test it out on your own machine? 
+
+**1. Clone the repo:**
 ```bash
-# Frontend
+git clone <your-repo-link>
+cd EventBook
+```
+
+**2. Install dependencies:**
+```bash
+# For frontend
 cd event-booking-app && npm install
 
-# Backend
+# For backend
 cd ../server && npm install
 ```
 
-### 2. Environment variables
-Create a `.env` file in the `server` folder:
+**3. Add your Environment Variables:**
+Create a `.env` inside the `server/` folder and add:
 ```bash
 PORT=5000
-MONGO_URI=your_mongodb_uri
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
+MONGO_URI=your_mongo_cloud_url
+GOOGLE_CLIENT_ID=your_google_id
+GOOGLE_CLIENT_SECRET=your_google_secret
 JWT_SECRET=your_jwt_secret
 CLIENT_URL=http://localhost:3000
-STRIPE_SECRET_KEY=sk_test_...
+EMAIL_USER=your_email
+EMAIL_PASS=your_email_app_password
 ```
 
-### 3. Seed the database
-```bash
-cd server && npm run seed
-```
-
-### 4. Run the app
-```bash
-# Terminal 1 (Backend)
-cd server && npm run dev
-
-# Terminal 2 (Frontend)
-cd event-booking-app && npm start
-```
-
-App runs at http://localhost:3000
-
-## Architecture Decisions
-
-**MVC Pattern** — Controllers handle business logic separately from routes for cleaner, testable code.
-
-**Google OAuth over email/password** — Reduces security risk (no password storage) and improves UX.
-
-**JWT over sessions** — Stateless auth works better for a React SPA calling a separate API server.
-
-**Mock-first development** — Built frontend with mock data first to validate UI before backend integration.
-
-## API Endpoints
-| Method | Route | Auth | Description |
-|---|---|---|---|
-| GET | /api/auth/google | No | Initiate Google OAuth |
-| GET | /api/auth/me | JWT | Get current user |
-| GET | /api/events | No | List events (paginated) |
-| GET | /api/events/:id | No | Single event |
-| POST | /api/bookings/create-payment-intent | JWT | Stripe payment intent |
-| POST | /api/bookings/confirm | JWT | Confirm booking |
-| GET | /api/bookings/my | JWT | User's bookings |
-| DELETE | /api/bookings/:id/cancel | JWT | Cancel booking |
-| GET | /api/admin/events | Admin | All events |
-| POST | /api/admin/events | Admin | Create event |
-| PUT | /api/admin/events/:id | Admin | Update event |
-| DELETE | /api/admin/events/:id | Admin | Deactivate event |
-| GET | /api/admin/bookings | Admin | All bookings |
+**4. Start it up:**
+Run the backend in one terminal (`cd server && npm run dev`) and the frontend in another (`cd event-booking-app && npm start`).
