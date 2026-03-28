@@ -42,6 +42,22 @@ export const AuthProvider = ({ children }) => {
     window.location.href = `${baseUrl}/api/auth/google`;
   }
 
+  const adminLoginLocal = async (username, password) => {
+    try {
+      const res = await api.post('/api/auth/admin-login', { username, password });
+      if (res.data.success) {
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        setUser(res.data.user);
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
+  }
+
   const logout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
@@ -50,7 +66,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading }}>
+    <AuthContext.Provider value={{ user, login, adminLoginLocal, logout, loading }}>
       {!loading && children}
     </AuthContext.Provider>
   )

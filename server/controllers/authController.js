@@ -23,8 +23,35 @@ exports.googleCallback = (req, res, next) => {
   }
 };
 
+exports.adminLogin = (req, res, next) => {
+  const { username, password } = req.body;
+  if (username === 'adminuser' && password === 'adminpass') {
+    const adminUser = {
+      id: '000000000000000000000000',
+      name: 'Admin Reviewer',
+      avatar: 'https://ui-avatars.com/api/?name=Admin+User&background=2563eb&color=fff',
+      role: 'admin'
+    };
+    const token = jwt.sign(
+      { id: adminUser.id, email: 'admin@eventbook.com', role: adminUser.role },
+      config.jwtSecret,
+      { expiresIn: config.jwtExpiry }
+    );
+    return res.json({ success: true, token, user: adminUser });
+  }
+  return res.status(401).json({ success: false, message: 'Invalid admin credentials' });
+};
+
 exports.getMe = async (req, res, next) => {
   try {
+    if (req.user.id === '000000000000000000000000') {
+      return res.json({ success: true, data: {
+        _id: req.user.id,
+        name: 'Admin Reviewer',
+        avatar: 'https://ui-avatars.com/api/?name=Admin+User&background=2563eb&color=fff',
+        role: 'admin'
+      }});
+    }
     const user = await User.findById(req.user.id).select('-googleId');
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });

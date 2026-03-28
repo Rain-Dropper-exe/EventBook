@@ -10,6 +10,7 @@ import MyBookings from './pages/MyBookings';
 import AdminDashboard from './pages/AdminDashboard';
 import AuthCallback from './pages/AuthCallback';
 import Login from './pages/Login';
+import AdminLogin from './pages/AdminLogin';
 import './App.css';
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/events/:id" element={<EventDetail />} />
           <Route path="/orders" element={<MyBookings />} />
-          <Route path="/admin" element={user && user.role === 'admin' ? <AdminDashboard /> : <Navigate to="/" />} />
+          <Route path="/admin" element={user && user.role === 'admin' ? <AdminDashboard /> : <Navigate to="/admin-login" />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/login" element={<Login />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
         </Routes>
