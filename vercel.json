@@ -19,8 +19,12 @@
       "destination": "/server/server.js"
     },
     {
+      "source": "/static/(.*)",
+      "destination": "/event-booking-app/static/$1"
+    },
+    {
       "source": "/(.*)",
-      "destination": "/event-booking-app/build/index.html"
+      "destination": "/event-booking-app/index.html"
     }
   ]
 }
